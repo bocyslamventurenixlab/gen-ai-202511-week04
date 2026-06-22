@@ -1,12 +1,22 @@
 :root {
-    --bg: #f6fff6;
-    --panel: #ffffff;
-    --accent: #1e7f41;
-    /* green theme */
-    --accent-600: #166b36;
-    --muted: #6b6b6b;
-    --radius: 8px;
-    --container-width: 1000px;
+    /* Color tokens (from design.md) */
+    --color-ink: #1d1d1f;
+    --color-graphite: #707070;
+    --color-slate: #474747;
+    --color-ash: #333333;
+    --color-fog: #f5f5f7;
+    --color-snow: #ffffff;
+    --color-obsidian: #000000;
+    --color-silver-mist: #e8e8ed;
+    --color-azure: #0071e3;
+    --color-cobalt-link: #0066cc;
+
+    /* Radii & spacing */
+    --radius-cards: 28px;
+    --radius-buttons: 999px;
+    --container-width: 1200px;
+    --spacing-16: 16px;
+    --spacing-28: 28px;
 }
 
 * {
@@ -14,33 +24,40 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg, #f0fff0 0%, var(--bg) 100%);
-    color: #123;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--color-fog);
+    color: var(--color-ink);
     margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 20px
+    padding: 24px;
 }
 
 .site-header {
-    background: var(--panel);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-    border-bottom: 4px solid var(--accent);
+    background: var(--color-snow);
+    border-bottom: 1px solid var(--color-silver-mist);
+    position: sticky;
+    top: 0;
+    z-index: 40;
 }
 
 .site-header .container {
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    height: 56px;
 }
 
 .site-header h1 {
-    margin: 12px 0;
-    color: var(--accent)
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-ink);
+    font-weight: 600;
 }
 
 .main-nav ul {
@@ -51,73 +68,94 @@ body {
     gap: 12px
 }
 
+.nav-actions {
+    margin-left: 16px;
+}
+
 .main-nav a {
-    color: var(--accent-600);
+    color: var(--color-ink);
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 6px
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
 .main-nav a:hover {
-    background: rgba(30, 127, 65, 0.08)
+    color: var(--color-azure);
 }
 
 .main-nav.small ul {
-    gap: 8px
+    gap: 8px;
 }
 
 main h2 {
-    color: var(--accent)
+    color: var(--color-ink);
 }
 
 .quick-links {
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 12px
+    gap: 12px;
 }
 
 .btn {
     display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--color-ink);
+    background: transparent;
+    padding: 6px 10px;
     border-radius: 6px;
-    text-decoration: none
 }
 
-.btn:hover {
-    background: var(--accent-600)
+.btn-cta {
+    background: var(--color-azure);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: var(--radius-buttons);
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.btn-dark {
+    background: var(--color-obsidian);
+    color: var(--color-snow);
+    padding: 8px 16px;
+    border-radius: var(--radius-buttons);
+    display: inline-block;
+    text-decoration: none;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 12px;
-    background: var(--panel);
-    border-radius: var(--radius);
-    overflow: hidden
+    background: var(--color-snow);
+    border-radius: var(--radius-cards);
+    overflow: hidden;
 }
 
 th,
 td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #eee;
-    text-align: left
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-silver-mist);
+    text-align: left;
 }
 
 th {
-    background: linear-gradient(180deg, rgba(30, 127, 65, 0.08), transparent);
-    color: var(--accent-600)
+    background: transparent;
+    color: var(--color-graphite);
+    font-weight: 600;
 }
 
 tbody tr:hover {
-    background: rgba(30, 127, 65, 0.04)
+    background: rgba(0,0,0,0.02);
 }
 
 .site-footer {
-    padding: 12px 0;
-    color: var(--muted)
+    padding: 24px 0;
+    color: var(--color-graphite);
 }
 
 .social {
@@ -129,7 +167,7 @@ tbody tr:hover {
 }
 
 .social a {
-    color: var(--accent-600);
+    color: var(--color-graphite);
     text-decoration: none
 }
 
@@ -147,5 +185,10 @@ tbody tr:hover {
     th,
     td {
         font-size: 13px
+    }
+
+    .nav-actions {
+        margin-left: 0;
+        margin-top: 12px;
     }
 }
